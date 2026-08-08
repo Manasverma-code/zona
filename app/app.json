@@ -8,7 +8,7 @@
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0B0B10",
     "extra": {
-      "apiUrl": "http://192.168.18.5:8000",
+      "apiUrl": "http://10.16.174.147:8000",
       "eas": {
         "projectId": "f9e905ce-9586-4ba4-89eb-01133b57a3c3"
       }
