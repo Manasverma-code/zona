@@ -8,7 +8,7 @@
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0B0B10",
     "extra": {
-      "apiUrl": ""
+      "apiUrl": "http://192.168.18.5:8000"
     },
     "plugins": [
       [
@@ -20,11 +20,13 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.zona.app",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Zona needs your location to know you're inside the zone."
       }
     },
     "android": {
+      "package": "com.zona.app",
       "adaptiveIcon": {
         "backgroundColor": "#0B0B10",
         "foregroundImage": "./assets/android-icon-foreground.png",
