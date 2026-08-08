@@ -104,7 +104,9 @@ def require_inside(
 
     reason = None
 
-    if lat is None or lon is None:
+    if not config.GEOFENCE_ENABLED:
+        reason = None  # gate off → everyone is "inside"
+    elif lat is None or lon is None:
         reason = "no_position"
     elif fix_age_seconds is None:
         reason = "no_fix_timestamp"

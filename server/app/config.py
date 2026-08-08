@@ -36,6 +36,13 @@ MAX_GPS_ACCURACY_METERS = int(os.getenv("ZONA_MAX_GPS_ACCURACY_METERS", "50"))
 # dev-build plugin (see app/src/location.ts collectBssids).
 REQUIRE_BSSID_PROOF = os.getenv("ZONA_REQUIRE_BSSID_PROOF", "0") == "1"
 
+# THE gate's master switch. ON means only devices physically inside the
+# campus polygon (plus fresh, accurate GPS) can see or write anything.
+# OFF (default for now) means the app works from anywhere — no location
+# checks at all. Flip to 1 when the real campus polygon is in place
+# (ZONA_CAMPUS_POLYGON) and location proof is wanted again.
+GEOFENCE_ENABLED = os.getenv("ZONA_GEOFENCE_ENABLED", "0") == "1"
+
 # Anonymous handle format: an adjective + a number, e.g. "Violet-384".
 # It is re-rolled every week so nothing is traceable long-term.
 # (wordlists live in auth.py)

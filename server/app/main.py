@@ -179,6 +179,8 @@ def server_to_out(db: Session, server: models.Server, viewer_id: int | None = No
 def gate_status(evidence: LocationEvidence) -> GateStatus:
     """Non-throwing version of the gate — used by routes that work both
     inside AND outside (register, ping). Reports WHY instead of raising."""
+    if not config.GEOFENCE_ENABLED:
+        return GateStatus(inside=True)
     if evidence.lat is None or evidence.lon is None:
         return GateStatus(inside=False, reason="no_position")
     if evidence.fix_age_seconds is None or evidence.fix_age_seconds > config.MAX_FIX_AGE_SECONDS:
