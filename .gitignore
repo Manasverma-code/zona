@@ -9,8 +9,8 @@ server/zona.db
 server/*.db
 
 # Server runtime logs
-server/uvicorn*.log
-server/uvicorn*.err
+server/*.log
+server/*.err
 
 # ---------- Secrets & local env ----------
 # NEVER commit real secrets. Server config reads these from the environment.
