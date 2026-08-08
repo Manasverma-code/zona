@@ -80,8 +80,8 @@ def parse_location(
                 bssids.append(candidate)
 
     return LocationEvidence(
-        lat=lat if -90 <= lat <= 90 else None,
-        lon=lon if -180 <= lon <= 180 else None,
+        lat=lat if lat is not None and -90 <= lat <= 90 else None,
+        lon=lon if lon is not None and -180 <= lon <= 180 else None,
         fix_age_seconds=None if fix_epoch is None else time.time() - fix_epoch,
         accuracy_meters=accuracy,
         bssid_hashes=bssids,
