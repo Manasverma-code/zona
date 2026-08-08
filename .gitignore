@@ -1,0 +1,31 @@
+# ---------- Python (server) ----------
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Local dev database — contains real user data, never commit
+server/zona.db
+server/*.db
+
+# Server runtime logs
+server/uvicorn*.log
+server/uvicorn*.err
+
+# ---------- Secrets & local env ----------
+# NEVER commit real secrets. Server config reads these from the environment.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.p8
+*.jks
+*.mobileprovision
+
+# ---------- OS junk ----------
+.DS_Store
+Thumbs.db
+
+# ---------- Misc ----------
+dist-check/

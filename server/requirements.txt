@@ -1,0 +1,10 @@
+# Zona backend dependencies
+# Python 3.12+  (tested on 3.14)
+
+# Web framework — gives us routes, auto-docs at /docs, and type validation
+fastapi==0.115.*
+uvicorn[standard]==0.34.*      # the server that runs FastAPI
+
+# SQLAlchemy is the ORM (we write Python classes, it writes SQL).
+# Works with SQLite (local dev) AND Postgres (production) with zero code changes.
+sqlalchemy==2.0.*
