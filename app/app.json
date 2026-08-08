@@ -30,6 +30,7 @@
     },
     "android": {
       "package": "com.zona.app",
+      "usesCleartextTraffic": true,
       "adaptiveIcon": {
         "backgroundColor": "#0B0B10",
         "foregroundImage": "./assets/android-icon-foreground.png",

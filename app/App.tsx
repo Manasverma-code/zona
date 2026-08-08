@@ -256,6 +256,14 @@ export default function App() {
       <View style={styles.boot}>
         <StatusBar style="light" />
         <Text style={styles.bootText}>zona</Text>
+        {error && (
+          <View style={styles.bootErrorWrap}>
+            <Text style={styles.bootError}>{error}</Text>
+            <Pressable style={styles.bootRetry} onPress={() => boot()}>
+              <Text style={styles.bootRetryText}>Retry</Text>
+            </Pressable>
+          </View>
+        )}
       </View>
     );
   }
@@ -330,6 +338,30 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: '800',
     letterSpacing: 2,
+  },
+  bootErrorWrap: {
+    position: 'absolute',
+    bottom: 120,
+    left: 24,
+    right: 24,
+    alignItems: 'center',
+  },
+  bootError: {
+    color: theme.danger,
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 14,
+  },
+  bootRetry: {
+    backgroundColor: theme.accent,
+    borderRadius: 20,
+    paddingHorizontal: 28,
+    paddingVertical: 10,
+  },
+  bootRetryText: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 15,
   },
   header: {
     flexDirection: 'row',
