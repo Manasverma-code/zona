@@ -45,14 +45,19 @@ async function call<T>(method: string, path: string, opts: CallOptions = {}): Pr
   if (opts.emoji) headers['X-Zona-Emoji'] = encodeURIComponent(opts.emoji);
 
   let res: Response;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8_000);
   try {
     res = await fetch(`${API_URL}${path}`, {
       method,
       headers,
       body: opts.body != null ? JSON.stringify(opts.body) : undefined,
+      signal: controller.signal,
     });
   } catch {
     throw new ApiError(0, "Can't reach the Zona server. Check your connection.");
+  } finally {
+    clearTimeout(timer);
   }
 
   if (!res.ok) {

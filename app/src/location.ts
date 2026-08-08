@@ -26,9 +26,13 @@ export async function collectEvidence(): Promise<Evidence> {
       if (!perm.granted) return EMPTY;
     }
 
-    const pos = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.High,
-    });
+    // getCurrentPositionAsync can wait for a GPS fix indefinitely; race it
+    // against a timer so the boot screen can never hang on no-fix.
+    const pos = await Promise.race([
+      Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.High }),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), 8_000)),
+    ]);
+    if (!pos) return EMPTY; // no fix in 8s → report no position
 
     return {
       lat: pos.coords.latitude,
